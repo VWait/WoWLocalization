@@ -1,0 +1,23 @@
+{% extends 'main/base.html' %}
+{% block content %}
+
+<div class="album py-5">
+  <div class="py-5 text-center container">
+    <h1>Найдено (число) карт</h1>
+    <div class="button-group mt-3">
+      <button class="btn btn-outline-light btn-sm">Вернуться на главную</button>
+      <button class="btn btn-outline-light btn-sm">Расширенный поиск</button>
+    </div>
+  </div>
+</div>
+<div class="container mt-3">
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
+    <!-- {% for card in selected_cards %} -->
+    <div class="col">
+      <a class='btn btn-outline-secondary m-0 p-1 border' href='#' style="border-color: #A370F7;"><img src='{{ card.img }}' class="img w-100 h-100"></a>
+    </div>
+    <!--- {% endfor %} ---> 
+  </div>
+</div>
+
+{% endblock %}

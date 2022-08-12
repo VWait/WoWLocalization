@@ -1,0 +1,19 @@
+{% extends 'main/base.html' %}
+{% block content %}
+
+<div class="container-fluid w-50 p-3 mt-5 border border-white rounded-3">
+  <h2>Поиск карты</h2>
+    
+  <div class="input-group mb-2 mt-3">
+    <input type="text" class="form-control" placeholder="Название карты" aria-label="Recipient's username" aria-describedby="button-addon2">
+    <a class="btn btn-outline-light" type="button" href="{% url 'selected'%}">Найти</a>
+  </div>
+
+  <div class="button-group">
+    <a class="btn btn-outline-light btn-sm" type="button" href="{% url 'advanced' %}">Расширенный поиск</a>
+    <a class="btn btn-outline-light btn-sm" type="button" href="{% url 'random' %}">Случайная карта</a>
+    <a class="btn btn-outline-light btn-sm" type="button" href="{% url 'collection' %}">Вся коллекция</a>
+  </div>
+</div>
+
+{% endblock %}

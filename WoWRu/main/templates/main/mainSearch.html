@@ -4,10 +4,14 @@
 <div class="container-fluid w-50 p-3 mt-5 border border-white rounded-3">
   <h2>Поиск карты</h2>
     
-  <div class="input-group mb-2 mt-3">
-    <input type="text" class="form-control" placeholder="Название карты" aria-label="Recipient's username" aria-describedby="button-addon2">
-    <a class="btn btn-outline-light" type="button" href="{% url 'selected'%}">Найти</a>
-  </div>
+  <form method="post">
+  {% csrf_token %}
+    <div class="input-group mb-2 mt-3">
+      {{ form.text }}
+      <button class="btn btn-outline-light" type="submit">Найти</button>
+      <span>{{error}}</span>
+    </div>
+  </form>
 
   <div class="button-group">
     <a class="btn btn-outline-light btn-sm" type="button" href="{% url 'advanced' %}">Расширенный поиск</a>

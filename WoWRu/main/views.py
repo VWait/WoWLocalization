@@ -1,8 +1,23 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from .forms import SearchForm
 
 
 def index(request):
-    return render(request, 'main/mainSearch.html')
+    error = ''
+    if request.method == 'POST':
+        form = SearchForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('selected')
+        else:
+            error = 'Данные введены некорректно'
+
+    form = SearchForm()
+    context = {
+        'form': form,
+        'error': error,
+    }
+    return render(request, 'main/mainSearch.html', context)
 
 
 def selected_cards(request):

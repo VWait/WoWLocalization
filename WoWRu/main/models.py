@@ -33,3 +33,7 @@ class Card(models.Model):
     set_en = models.CharField('Выпуск-англ', max_length=50, default='-')
     set_ru = models.CharField('Выпуск-рус', max_length=50, default='-')
     released = models.CharField('Дата выпуска', max_length=20, default='-')
+
+
+class SimpleSearchRequest(models.Model):
+    text = models.CharField('Текст', max_length=50)

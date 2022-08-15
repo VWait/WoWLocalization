@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
 from .forms import SearchForm
+from .models import Card
+from .scripts import parse_card_xls_to_sql
 
 
 def index(request):
@@ -7,8 +9,10 @@ def index(request):
     if request.method == 'POST':
         form = SearchForm(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect('selected')
+            text = form.cleaned_data['text']
+            # if text == 'запарсить':
+            #     parse_card_xls_to_sql(Card)
+            return selected_cards(request, text)
         else:
             error = 'Данные введены некорректно'
 
@@ -20,7 +24,8 @@ def index(request):
     return render(request, 'main/mainSearch.html', context)
 
 
-def selected_cards(request):
+def selected_cards(request, text):
+    cards = Card.objects.all()
     return render(request, 'main/selectedCards.html')
 
 
